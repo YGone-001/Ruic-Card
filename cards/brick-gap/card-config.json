@@ -1,0 +1,31 @@
+{
+  "title": "砖隙之间",
+  "backMark": "颖",
+  "subtitle": "城市漫游",
+  "technique": "回望",
+  "tagline": "墙的另一边，风还记得他",
+  "edition": "001 / 100",
+  "collection": "个人全息典藏 · 街拍系列",
+  "description": "砖隙泄下微光，他在回眸的一瞬被定格；翻转这张全息镭射卡，让城市的流动在掌心折射。",
+  "font": "C:/Windows/Fonts/simkai.ttf",
+  "assets": {
+    "model": "./assets/card.glb",
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "effects": "./assets/effects.png"
+  },
+  "parameters": {
+    "subjectScale": 1.25,
+    "subjectDepth": 0.4,
+    "backgroundDepth": -0.25,
+    "effectsScale": 1,
+    "effectsDepth": 0.62,
+    "foil": 0.6
+  },
+  "safeArea": {
+    "scale": 1.12,
+    "offset": [-0.1, -0.13]
+  }
+}

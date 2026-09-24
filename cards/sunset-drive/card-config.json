@@ -1,0 +1,34 @@
+{
+  "title": "暮途",
+  "backMark": "博",
+  "subtitle": "落日慕思",
+  "technique": "向光而行",
+  "tagline": "天色渐暗，路还在向前",
+  "edition": "002 / 100",
+  "collection": "个人全息典藏 · 行车系列",
+  "description": "夕阳停在镜片与车窗之间；翻转这张全息卡，让行驶中的光从掌心掠过。",
+  "font": "C:\\Windows\\Fonts\\simkai.ttf",
+  "assets": {
+    "model": "./assets/card.glb",
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "effects": "./assets/effects.png"
+  },
+  "parameters": {
+    "subjectScale": 1.05,
+    "subjectDepth": 0.38,
+    "backgroundDepth": -0.22,
+    "effectsScale": 1.0,
+    "effectsDepth": 0.58,
+    "foil": 0.64
+  },
+  "safeArea": {
+    "scale": 1.0,
+    "offset": [
+      0,
+      0
+    ]
+  }
+}

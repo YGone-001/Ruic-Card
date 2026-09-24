@@ -1,0 +1,33 @@
+{
+  "title": "暮途",
+  "backMark": "博",
+  "subtitle": "落日慕思",
+  "technique": "向光而行",
+  "tagline": "天色渐暗，路还在向前",
+  "edition": "002 / 100",
+  "collection": "个人全息典藏 · 行车系列",
+  "description": "夕阳停在镜片与车窗之间；翻转这张全息卡，让行驶中的光从掌心掠过。",
+  "assets": {
+    "model": "./assets/cards/sunset-drive/card.glb",
+    "subject": "./assets/cards/sunset-drive/subject.png",
+    "background": "./assets/cards/sunset-drive/background.png",
+    "text": "./assets/cards/sunset-drive/text.png",
+    "lineart": "./assets/cards/sunset-drive/lineart.png",
+    "effects": "./assets/cards/sunset-drive/effects.png"
+  },
+  "parameters": {
+    "subjectScale": 1.05,
+    "subjectDepth": 0.38,
+    "backgroundDepth": -0.22,
+    "effectsScale": 1,
+    "effectsDepth": 0.58,
+    "foil": 0.64
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [0, 0]
+  },
+  "appearance": {
+    "finish": "gold"
+  }
+}

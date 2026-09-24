@@ -1,0 +1,34 @@
+{
+  "title": "云阶",
+  "backMark": "俊",
+  "subtitle": "凭栏望远",
+  "technique": "云开见山",
+  "tagline": "檐下有风，山外有云",
+  "edition": "003 / 100",
+  "collection": "个人全息典藏 · 天游系列",
+  "description": "云从檐角掠过，山在栏外铺开；翻转这张全息卡，让晴空与石阶在掌心起伏。",
+  "assets": {
+    "model": "./assets/cards/cloud-terrace/card.glb",
+    "subject": "./assets/cards/cloud-terrace/subject.png",
+    "background": "./assets/cards/cloud-terrace/background.png",
+    "text": "./assets/cards/cloud-terrace/text.png",
+    "lineart": "./assets/cards/cloud-terrace/lineart.png",
+    "effects": "./assets/cards/cloud-terrace/effects.png"
+  },
+  "parameters": {
+    "subjectScale": 1,
+    "subjectDepth": 0,
+    "backgroundDepth": -0.04,
+    "effectsScale": 1,
+    "effectsDepth": 0.55,
+    "foil": 0.61
+  },
+  "safeArea": {
+    "scale": 1,
+    "offset": [0, 0]
+  },
+  "appearance": {
+    "finish": "pearl",
+    "background": "#edf8f4"
+  }
+}

@@ -1,0 +1,3 @@
+# Recovered from tools/typography-env package metadata before removing the
+# non-portable virtual environment. Recreate with Python 3.12.
+pillow==12.3.0

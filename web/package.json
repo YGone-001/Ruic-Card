@@ -1,0 +1,1 @@
+{"name":"ruic-card-skill-web","private":true,"version":"1.0.0","type":"module","scripts":{"start":"node server.mjs","build":"esbuild app.js --bundle --format=esm --target=es2020 --outfile=app.bundle.js"},"dependencies":{"three":"0.180.0"},"devDependencies":{"esbuild":"^0.28.2"}}

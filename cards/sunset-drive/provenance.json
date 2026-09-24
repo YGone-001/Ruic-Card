@@ -1,0 +1,6 @@
+{
+  "reference_role": "The supplied photograph is the identity, composition, and foreground-pixel reference.",
+  "background_prompt": "Remove the seated man and reconstruct only the same car interior, window, sunset sky, sun, distant landscape, dashboard, and seat; no people or text.",
+  "mask_prompt": "Create a high-contrast person silhouette guide at the original framing for an extraction QA reference.",
+  "foreground_method": "Original-photo RGB pixels and a seeded segmentation pass; no regenerated face or clothing is used in the final subject layer."
+}
