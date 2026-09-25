@@ -22,11 +22,10 @@ CARD = ROOT / "cards" / "sunset-drive"
 ASSETS = CARD / "assets"
 WEB_ASSETS = ROOT / "web" / "assets" / "cards" / "sunset-drive"
 CANVAS = (1024, 1536)
-PHOTO = Path(os.environ.get("RUIC_SECOND_PHOTO", CARD / "source" / "reference.png"))
-MASK = Path(os.environ.get("RUIC_SECOND_MASK", CARD / "source" / "subject-mask.png"))
-BACKGROUND = Path(
-    os.environ.get("RUIC_SECOND_BACKGROUND", CARD / "source" / "background-plate.png")
-)
+PHOTO_VALUE = os.environ.get("RUIC_SUNSET_DRIVE_PHOTO")
+BACKGROUND_VALUE = os.environ.get("RUIC_SUNSET_DRIVE_BACKGROUND")
+PHOTO = Path(PHOTO_VALUE).expanduser() if PHOTO_VALUE else None
+BACKGROUND = Path(BACKGROUND_VALUE).expanduser() if BACKGROUND_VALUE else None
 FONT = Path(r"C:\Windows\Fonts\simkai.ttf")
 
 
@@ -171,6 +170,11 @@ def save(image: Image.Image, name: str) -> None:
 
 
 def main() -> None:
+    if PHOTO is None or BACKGROUND is None:
+        raise RuntimeError(
+            "Set RUIC_SUNSET_DRIVE_PHOTO and RUIC_SUNSET_DRIVE_BACKGROUND "
+            "to private source image paths."
+        )
     if not all(path.exists() for path in (PHOTO, BACKGROUND, FONT)):
         missing = [str(path) for path in (PHOTO, BACKGROUND, FONT) if not path.exists()]
         raise FileNotFoundError("Missing card source(s): " + ", ".join(missing))

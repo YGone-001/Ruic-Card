@@ -42,7 +42,7 @@ def main() -> None:
         page.goto(URL, wait_until="networkidle")
         page.wait_for_function("window.__holo && window.__holo.ready === true")
         brick_gap = card_state(page)
-        assert brick_gap["title"] == "砖隙之间", brick_gap
+        assert brick_gap["title"] == "隙光", brick_gap
 
         page.get_by_role("button", name="02 暮途").click()
         page.wait_for_function("window.__holo?.config?.title === '暮途'")
@@ -55,6 +55,22 @@ def main() -> None:
         assert page.locator("#card-title").inner_text() == "暮途"
         assert page.locator("[data-card='sunset-drive']").get_attribute("aria-pressed") == "true"
         assert page.locator("[data-card='brick-gap']").get_attribute("aria-pressed") == "false"
+
+        page.get_by_role("button", name="04 夏荫").click()
+        page.wait_for_function("window.__holo?.config?.title === '夏荫'")
+        page.wait_for_timeout(350)
+        fourth = card_state(page)
+        assert fourth["subtitle"] == "园游拾光", fourth
+        assert fourth["edition"] == "004 / 100", fourth
+        assert fourth["backMark"] == "海", fourth
+        assert fourth["model"] == "./assets/cards/summer-shade/card.glb", fourth
+        assert page.locator("#card-title").inner_text() == "夏荫"
+        assert page.locator("[data-card='summer-shade']").get_attribute("aria-pressed") == "true"
+        page.screenshot(path=str(ROOT / "verification" / "fourth-card-live.png"), full_page=True)
+
+        page.get_by_role("button", name="02 暮途").click()
+        page.wait_for_function("window.__holo?.config?.title === '暮途'")
+        page.wait_for_timeout(350)
 
         before_drag = second["rotation"]
         stage = page.locator("#stage")
@@ -86,6 +102,19 @@ def main() -> None:
         assert not overflow, "mobile layout overflowed"
         mobile.screenshot(path=str(ROOT / "verification" / "second-card-mobile.png"), full_page=True)
         mobile.close()
+
+        fourth_mobile = browser.new_page(
+            viewport={"width": 390, "height": 844}, device_scale_factor=1
+        )
+        fourth_mobile.goto(URL + "?card=summer-shade", wait_until="networkidle")
+        fourth_mobile.wait_for_function("window.__holo && window.__holo.ready === true")
+        assert card_state(fourth_mobile)["title"] == "夏荫"
+        overflow = fourth_mobile.evaluate("document.documentElement.scrollWidth > innerWidth")
+        assert not overflow, "mobile layout overflowed"
+        fourth_mobile.screenshot(
+            path=str(ROOT / "verification" / "fourth-card-mobile.png"), full_page=True
+        )
+        fourth_mobile.close()
         browser.close()
 
     assert not errors, errors
@@ -94,6 +123,7 @@ def main() -> None:
             {
                 "brick_gap": brick_gap,
                 "second": second,
+                "fourth": fourth,
                 "drag_rotation": after_drag,
                 "mobile_width": 390,
                 "console_errors": errors,

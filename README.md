@@ -1,16 +1,17 @@
 # RuiC Card · 个人全息卡片集
 
-一个基于 [RuiC Card Skill](https://github.com/HRuiCcc/RuiC-card-skill) 制作的本地 3D 全息卡片项目。仓库包含三张可交互卡片、统一的 Three.js 展示站点、分层美术资产、GLB 模型和可编辑的 Blender 工程。
+一个基于 [RuiC Card Skill](https://github.com/HRuiCcc/RuiC-card-skill) 制作的本地 3D 全息卡片项目。仓库包含四张可交互卡片、统一的 Three.js 展示站点、分层美术资产、GLB 模型和可编辑的 Blender 工程。
 
 ## 当前卡片
 
 | 编号 | 名称 | 系列 | 项目目录 |
 | --- | --- | --- | --- |
-| 001 | 砖隙之间 | 城市漫游 | `cards/brick-gap/` |
+| 001 | 隙光 | 城市漫游 | `cards/brick-gap/` |
 | 002 | 暮途 | 行车系列 | `cards/sunset-drive/` |
 | 003 | 云阶 | 天游系列 | `cards/cloud-terrace/` |
+| 004 | 夏荫 | 园游系列 | `cards/summer-shade/` |
 
-三张卡使用同一目录契约：`assets/` 存放分层源资产和 GLB 模型，`card-config.json` 存放卡片参数，`card.blend` 是可编辑工程；可选的 `source/` 保存重建资产所需的原始素材。
+四张卡使用同一目录契约：`assets/` 存放最终分层资产和 GLB 模型，`card-config.json` 存放卡片参数，`card.blend` 是可编辑工程。原始照片属于私密构建输入，不保存在仓库中。
 
 ## 快速预览
 
@@ -27,18 +28,19 @@ $env:HOST = "0.0.0.0"
 node web/server.mjs
 ```
 
-可以通过查询参数直达卡片，例如 `?card=brick-gap`、`?card=sunset-drive` 或 `?card=cloud-terrace`。
+可以通过查询参数直达卡片，例如 `?card=brick-gap`、`?card=sunset-drive`、`?card=cloud-terrace` 或 `?card=summer-shade`。
 
 ## 目录结构
 
 ```text
 .
 ├── cards/
-│   ├── brick-gap/                 # 001 砖隙之间
+│   ├── brick-gap/                 # 001 隙光
 │   ├── sunset-drive/              # 002 暮途
-│   └── cloud-terrace/             # 003 云阶
+│   ├── cloud-terrace/             # 003 云阶
+│   └── summer-shade/              # 004 夏荫
 ├── scripts/                       # 资产构建、流水线入口和验收脚本
-├── tools/                         # Python 依赖清单
+├── tools/                         # Python 依赖清单；共享的便携版 Blender 缓存（gitignored）
 ├── web/
 │   ├── assets/cards/<slug>/       # 展示站点所需的运行时资产
 │   ├── cards/<slug>.json          # 展示站点卡片配置
@@ -82,7 +84,14 @@ $env:RUIC_CARD_SKILL = "D:\path\to\RuiC-card-skill"
 python scripts\run_cloud_terrace_pipeline.py
 ```
 
-下载的 Blender 便携版会进入卡片输出目录并被 `.gitignore` 排除。第二张卡的原始照片、抠图参考和背景板不随仓库提供；重建前需设置 `RUIC_SECOND_PHOTO`、`RUIC_SECOND_MASK` 和 `RUIC_SECOND_BACKGROUND`。第三张卡的必要参考素材位于 `cards/cloud-terrace/source/`。
+下载的 Blender 便携版会进入共享的 `tools/` 并被 `.gitignore` 排除。现有网页、GLB、Blender 工程和最终图层不依赖原始照片；只有重新生成图层时才需要在本机或私人存储中准备源素材，并设置对应环境变量：
+
+| 卡片 | 私密构建输入 |
+| --- | --- |
+| `brick-gap` | `RUIC_BRICK_GAP_SOURCE_DIR` |
+| `sunset-drive` | `RUIC_SUNSET_DRIVE_PHOTO`、`RUIC_SUNSET_DRIVE_BACKGROUND` |
+| `cloud-terrace` | `RUIC_CLOUD_TERRACE_PHOTO` |
+| `summer-shade` | `RUIC_SUMMER_SHADE_PHOTO` |
 
 ## 分支策略
 
@@ -91,4 +100,4 @@ python scripts\run_cloud_terrace_pipeline.py
 
 ## 仓库策略
 
-仓库保留直接预览和继续编辑所需的 PNG/JPG、GLB、配置及正式 `.blend` 文件。不提交 Blender 便携版、虚拟环境、`node_modules`、渲染/验收输出、日志、`.blend1` 备份或每张卡重复生成的独立 Web 导出。
+仓库只保留直接预览和继续编辑所需的最终 PNG、GLB、配置及正式 `.blend` 文件。不得提交 `cards/*/source/` 中的原始照片或生成研究素材；卡片开发完成后应删除该目录，并从本机私密路径或私人云盘向构建脚本提供输入。此外不提交 Blender 便携版、虚拟环境、`node_modules`、渲染/验收输出、日志、`.blend1` 备份或每张卡重复生成的独立 Web 导出。

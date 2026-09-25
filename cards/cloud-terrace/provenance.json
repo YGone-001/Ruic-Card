@@ -1,8 +1,8 @@
 {
   "reference_role": "The supplied photograph is the identity, composition, and foreground-pixel reference.",
-  "reference_path": "./source/reference.jpg",
-  "generated_background_path": "./source/background-plate.png (archived study; not used in the corrected full-photo card)",
+  "source_policy": "Private external input supplied through RUIC_CLOUD_TERRACE_PHOTO; raw source is not stored in the repository.",
   "background_prompt": "Use case: precise-object-edit. Remove the person and bag completely; reconstruct the stone balcony and railing, traditional Chinese temple eaves, forested hillside, blue sky, and soft clouds. Keep it photorealistic; no people, text, glitter, foil, border, or watermark.",
   "foreground_method": "The corrected card uses the complete resized reference photo as both the main artwork and backing plate. No person segmentation or generated foreground is used, so face, hands, bag, shirt, trousers, and every visible body edge remain identical to the source photograph.",
-  "style": "Quiet daylight mountain-temple travel photography; jade, ivory, and restrained antique-gold card furniture; foil remains a material effect rather than painted artwork."
+  "style": "Quiet daylight mountain-temple travel photography; jade, ivory, and restrained antique-gold card furniture; foil remains a material effect rather than painted artwork.",
+  "refinement_2026_09_25": "Re-derived the line art from a person-only segmentation (silhouette plus interior detail edges) so the holographic ink glints follow the figure instead of an empty border ring, and densified and brightened the dust plane while keeping the typography zones quiet. The subject plane keeps its transparent border rim on purpose: the layer contract requires a genuinely transparent subject, and the full-photo card has no other transparent region."
 }

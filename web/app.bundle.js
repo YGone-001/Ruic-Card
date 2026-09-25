@@ -31119,7 +31119,8 @@ var settings = [
 var CARD_CONFIG_URLS = {
   "brick-gap": "./cards/brick-gap.json",
   "sunset-drive": "./cards/sunset-drive.json",
-  "cloud-terrace": "./cards/cloud-terrace.json"
+  "cloud-terrace": "./cards/cloud-terrace.json",
+  "summer-shade": "./cards/summer-shade.json"
 };
 var requestedCard = new URLSearchParams(location.search).get("card");
 var activeCardId = CARD_CONFIG_URLS[requestedCard] ? requestedCard : "brick-gap";

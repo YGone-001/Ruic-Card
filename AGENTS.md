@@ -2,7 +2,7 @@
 
 ## Repository purpose
 
-This repository contains three generated RuiC holographic cards and one shared Three.js gallery. Preserve both forms of deliverable: editable card sources under `cards/` and the directly runnable gallery under `web/`.
+This repository contains four generated RuiC holographic cards and one shared Three.js gallery. It is a final-asset repository: preserve editable card outputs under `cards/` and the directly runnable gallery under `web/`, but keep raw source photographs outside the repository.
 
 ## Branches
 
@@ -15,8 +15,7 @@ This repository contains three generated RuiC holographic cards and one shared T
 - Every card lives at `cards/<slug>/` and should use the same contract:
   - `assets/` for the five layered images and the GLB runtime model;
   - `card-config.json` for editable card metadata and material parameters;
-  - `card.blend` for the editable Blender source;
-  - optional `source/` for inputs required to rebuild the layers.
+  - `card.blend` for the editable Blender source.
 - Shared automation belongs in `scripts/`; dependency manifests belong in `tools/`.
 - The gallery mirrors runtime files as `web/cards/<slug>.json` and `web/assets/cards/<slug>/`.
 - `web/app.js` is the frontend source. Keep `web/app.bundle.js` in sync after frontend changes.
@@ -32,11 +31,13 @@ node --check web/app.js
 node --check web/app.bundle.js
 ```
 
-For frontend changes, run `npm install` and `npm run build` from `web/`, start `node web/server.mjs`, and verify all three card IDs: `brick-gap`, `sunset-drive`, and `cloud-terrace`.
+For frontend changes, run `npm install` and `npm run build` from `web/`, start `node web/server.mjs`, and verify all four card IDs: `brick-gap`, `sunset-drive`, `cloud-terrace`, and `summer-shade`.
 
 ## Generated and external content
 
 - Do not commit `node_modules`, Python environments, downloaded Blender builds, archives, logs, render output, verification screenshots, `.blend1` files, or per-card generated `web/` directories.
+- Never commit `cards/*/source/`, raw photographs, generated source studies, segmentation debug images, or local/private source paths. Build scripts must accept private inputs through documented environment variables.
+- After a card's final `assets/`, GLB, and `.blend` have been produced and verified, remove its local `cards/<slug>/source/` directory before staging changes.
 - Do commit the final layered artwork, GLB runtime models, final `.blend` sources, JSON configurations, and the bundled gallery JavaScript.
 - Never replace user artwork or source photography unless the user explicitly requests it.
 - Keep paths portable. Use repository-relative paths or documented environment variables; never commit machine-specific absolute user paths.

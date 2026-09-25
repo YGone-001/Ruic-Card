@@ -2,5 +2,6 @@
   "reference_role": "The supplied photograph is the identity, composition, and foreground-pixel reference.",
   "background_prompt": "Remove the seated man and reconstruct only the same car interior, window, sunset sky, sun, distant landscape, dashboard, and seat; no people or text.",
   "mask_prompt": "Create a high-contrast person silhouette guide at the original framing for an extraction QA reference.",
-  "foreground_method": "Original-photo RGB pixels and a seeded segmentation pass; no regenerated face or clothing is used in the final subject layer."
+  "foreground_method": "Original-photo RGB pixels and a seeded segmentation pass; no regenerated face or clothing is used in the final subject layer.",
+  "refinement_2026_09_25": "Intersected the GrabCut matte with a person-only segmentation of the composed scene to drop car-roof and window-pillar alpha fragments, pushed the ~89% veil over the person to full opacity, decontaminated fringe RGB from the nearest interior pixel, raised the dust plane alpha by 55%, and added a soft dark shadow under the typography for contrast against the bright sunset sky."
 }

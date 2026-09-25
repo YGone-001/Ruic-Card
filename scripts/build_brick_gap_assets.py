@@ -17,9 +17,13 @@ from scipy import ndimage
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARD = os.path.join(REPO_ROOT, "cards", "brick-gap")
-GEN = os.environ.get(
-    "RUIC_BRICK_GAP_SOURCE_DIR", os.path.join(CARD, "source", "generated")
-)
+GEN = os.environ.get("RUIC_BRICK_GAP_SOURCE_DIR")
+if not GEN:
+    raise RuntimeError(
+        "Set RUIC_BRICK_GAP_SOURCE_DIR to the private directory containing "
+        "the generated subject and background inputs."
+    )
+GEN = os.path.abspath(os.path.expanduser(GEN))
 AST = os.path.join(CARD, "assets")
 W, H = 1024, 1536
 

@@ -1,0 +1,7 @@
+{
+  "reference_role": "Generated layer art from the original skill session; the generator sources were never archived in the repository.",
+  "foreground_method": "Checkerboard keying with border flood and hole fill produced the original matte; the 2026-09-25 refinement keeps only the main alpha component and decontaminates fringe RGB from the nearest interior pixel, so silhouette edges no longer carry the board's white rim.",
+  "lineart_method": "Edge/threshold pass re-derived from the cleaned subject, keeping contour registration.",
+  "effects_method": "Sparse warm dust motes and soft glow discs with raised alpha so the floating plane reads while tilting.",
+  "style": "Urban street photography against a weathered brick wall; ivory and antique-gold typography; foil remains a material effect."
+}

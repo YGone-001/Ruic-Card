@@ -30,4 +30,7 @@ sys.argv = [
     str(ROOT / "cards" / "sunset-drive"),
     "--skip-npm",
 ]
+shared = sorted((ROOT / "tools").glob("blender-*/blender.exe"))
+if shared and "--blender" not in sys.argv:
+    sys.argv += ["--blender", str(shared[0])]
 runpy.run_path(str(SCRIPTS / "run_pipeline.py"), run_name="__main__")

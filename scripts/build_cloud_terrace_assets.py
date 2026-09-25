@@ -1,15 +1,16 @@
 """Build the layered source art for the third “云阶” holographic card.
 
-The supplied photograph remains the source of the hero's RGB pixels. A tightly
-seeded GrabCut matte supplies only the alpha channel; it never regenerates a
-face, pose, clothing, or bag. The separately generated background is an opaque,
-person-free plate used behind that original-photo subject.
+The supplied photograph remains the source of the card's RGB pixels. A tightly
+seeded GrabCut matte is used only to derive registered line art; it never
+regenerates a face, pose, clothing, or bag. No separate background plate is
+required.
 """
 
 from __future__ import annotations
 
 import json
 import math
+import os
 import random
 from pathlib import Path
 
@@ -23,9 +24,8 @@ CARD = ROOT / "cards" / "cloud-terrace"
 ASSETS = CARD / "assets"
 WEB_ASSETS = ROOT / "web" / "assets" / "cards" / "cloud-terrace"
 CANVAS = (1024, 1536)
-SOURCE = CARD / "source"
-PHOTO = SOURCE / "reference.jpg"
-BACKGROUND = SOURCE / "background-plate.png"
+PHOTO_VALUE = os.environ.get("RUIC_CLOUD_TERRACE_PHOTO")
+PHOTO = Path(PHOTO_VALUE).expanduser() if PHOTO_VALUE else None
 FONT = Path(r"C:\Windows\Fonts\simkai.ttf")
 
 
@@ -229,7 +229,11 @@ def save(image: Image.Image, name: str) -> None:
 
 
 def main() -> None:
-    required = (PHOTO, BACKGROUND, FONT)
+    if PHOTO is None:
+        raise RuntimeError(
+            "Set RUIC_CLOUD_TERRACE_PHOTO to the private reference photo path."
+        )
+    required = (PHOTO, FONT)
     if not all(path.exists() for path in required):
         missing = [str(path) for path in required if not path.exists()]
         raise FileNotFoundError("Missing card source(s): " + ", ".join(missing))
@@ -292,8 +296,7 @@ def main() -> None:
     )
     provenance = {
         "reference_role": "The supplied photograph is the identity, composition, and foreground-pixel reference.",
-        "reference_path": "./source/reference.jpg",
-        "generated_background_path": "./source/background-plate.png (archived study; not used in the corrected full-photo card)",
+        "source_policy": "Private external input supplied through RUIC_CLOUD_TERRACE_PHOTO; raw source is not stored in the repository.",
         "background_prompt": "Use case: precise-object-edit. Remove the person and bag completely; reconstruct the stone balcony and railing, traditional Chinese temple eaves, forested hillside, blue sky, and soft clouds. Keep it photorealistic; no people, text, glitter, foil, border, or watermark.",
         "foreground_method": "The corrected card uses the complete resized reference photo as both the main artwork and backing plate. No person segmentation or generated foreground is used, so face, hands, bag, shirt, trousers, and every visible body edge remain identical to the source photograph.",
         "style": "Quiet daylight mountain-temple travel photography; jade, ivory, and restrained antique-gold card furniture; foil remains a material effect rather than painted artwork.",

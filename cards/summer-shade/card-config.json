@@ -1,0 +1,38 @@
+{
+  "title": "夏荫",
+  "backMark": "海",
+  "subtitle": "园游拾光",
+  "technique": "凝望",
+  "tagline": "绿荫深处，光落肩头",
+  "edition": "004 / 100",
+  "collection": "个人全息典藏 · 园游系列",
+  "description": "绿荫把喧嚣滤成光斑，他在花影间凝望；翻转这张全息卡，让夏日的风在掌心流动。",
+  "font": "C:\\Windows\\Fonts\\simkai.ttf",
+  "assets": {
+    "model": "./assets/card.glb",
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "effects": "./assets/effects.png"
+  },
+  "parameters": {
+    "subjectScale": 1.0,
+    "subjectDepth": 0.4,
+    "backgroundDepth": -0.25,
+    "effectsScale": 1.0,
+    "effectsDepth": 0.55,
+    "foil": 0.6
+  },
+  "safeArea": {
+    "scale": 1.0,
+    "offset": [
+      0,
+      0
+    ]
+  },
+  "appearance": {
+    "finish": "pearl",
+    "background": "#eef6ea"
+  }
+}

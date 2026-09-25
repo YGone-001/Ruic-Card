@@ -1,0 +1,8 @@
+{
+  "reference_role": "The supplied photograph is the identity, composition, and foreground-pixel reference.",
+  "source_policy": "Private external input supplied through RUIC_SUMMER_SHADE_PHOTO; raw source is not stored in the repository.",
+  "foreground_method": "rembg u2net_human_seg supplies only the alpha channel; every RGB pixel of the subject layer comes from the original photograph, so face, glasses, hoodie and tee print stay identical to the source.",
+  "background_method": "Person-free plate reconstructed by Telea inpainting of the dilated matte, re-textured with bokeh discs colour-sampled from the real background and feather-blended into the untouched photo bokeh.",
+  "lineart_method": "Edge/threshold pass over the finished subject layer, so contours register exactly.",
+  "style": "Summer garden portrait photography with shallow bokeh; leaf-green, ivory and restrained gold card furniture; foil remains a material effect rather than painted artwork."
+}
